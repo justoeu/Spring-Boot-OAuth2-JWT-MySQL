@@ -7,9 +7,10 @@ storage system so our application will work faster and better even in cloud serv
 
 ### Features
 User Auhtentication
-
 User Authorazation
-
 Account Registration
-
 Forgot Password (Not Ready yet)
+
+### The concept of OAuth2 authentication and JWT
+OAuth1 has 3 steps and one loop. Check the diagram bellow and you will understand what we define as step and loop.
+![alt tag](http://s12.postimg.org/mnjxjivrx/Screen_Shot_2016_02_13_at_8_27_17_PM.png)
