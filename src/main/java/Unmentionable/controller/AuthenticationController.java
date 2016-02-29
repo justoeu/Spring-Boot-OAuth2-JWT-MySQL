@@ -41,6 +41,12 @@ public class AuthenticationController extends BaseController{
     @Autowired
     private SmtpMailSender smtpMailSender;
 
+    @RequestMapping(value="/api/sample", method= RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Account> sampleGet(HttpServletResponse response){
+        System.out.println("");
+        return new ResponseEntity<Account>(accountService.findByUsername("papidakos"), HttpStatus.CREATED);
+    }
+
     @RequestMapping(value="/api/sample", method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Account> sample(HttpServletResponse response){
         return new ResponseEntity<Account>(accountService.findByUsername("papidakos"), HttpStatus.CREATED);
