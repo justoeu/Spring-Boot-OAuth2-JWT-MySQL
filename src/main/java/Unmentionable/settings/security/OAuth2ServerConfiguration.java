@@ -33,11 +33,14 @@ public class OAuth2ServerConfiguration {
         @Autowired
         private JwtAccessTokenConverter jwtAccessTokenConverter;
 
+        @Autowired
+        private TokenStore tokenStore;
+
         @Override
         public void configure(ResourceServerSecurityConfigurer resources) {
             // @formatter:off
             resources
-                    .resourceId(RESOURCE_ID).tokenStore(new JwtTokenStore(jwtAccessTokenConverter));
+                    .resourceId(RESOURCE_ID).tokenStore(tokenStore);
             // @formatter:on
         }
 
@@ -65,12 +68,15 @@ public class OAuth2ServerConfiguration {
         @Autowired
         private JwtAccessTokenConverter jwtAccessTokenConverter;
 
-//        private TokenStore tokenStore = new InMemoryTokenStore();
-        private TokenStore tokenStore = new JwtTokenStore(jwtAccessTokenConverter);
+        @Autowired
+        private TokenStore tokenStore;
 
         @Autowired
         @Qualifier("authenticationManagerBean")
         private AuthenticationManager authenticationManager;
+
+        @Autowired
+        CustomUserDetailsService userDetailsService;
 
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -78,7 +84,8 @@ public class OAuth2ServerConfiguration {
             endpoints
                     .tokenStore(tokenStore)
                     .authenticationManager(authenticationManager)
-                    .accessTokenConverter(jwtAccessTokenConverter);
+                    .accessTokenConverter(jwtAccessTokenConverter)
+                    .userDetailsService(userDetailsService);
             // @formatter:on
         }
 
