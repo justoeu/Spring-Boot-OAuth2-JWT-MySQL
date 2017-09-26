@@ -1,3 +1,9 @@
+# This repository is not supported anymore :(
+
+So guys thank you very much for your help and your feedback but unfortunately, I don't have enough time to support it. Of course, you can clone it and play with it but keep in mind that this project is a little bit out of date. 
+
+Thanks again :) 
+
 # Full Security Login System with Spring Boot
 
 This project contains all the configuration about an authentication and authorization system. 
